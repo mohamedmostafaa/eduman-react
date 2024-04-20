@@ -33,3 +33,14 @@
 @use "component/eduman-custom";
 @use "component/terms_conditions";
 
+@import 'abstract/colors';
+
+body.light-mode {
+  --background-color: $color-bg-light;
+  --text-color: $color-text-light;
+}
+
+body.dark-mode {
+  --background-color: $color-bg-dark;
+  --text-color: $color-text-dark;
+}

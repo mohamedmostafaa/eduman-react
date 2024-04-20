@@ -13,12 +13,14 @@ import HeaderTwo from "./header/HeaderTwo";
 import HeaderThree from "./header/HeaderThere";
 import FooterTwo from "./footer/footerTwo";
 import HeaderFour from "./header/HeaderFour";
+import { useTheme } from "../contextApi/ThemeContext";
 
 interface WrapperProps {
   children: React.ReactNode;
 }
 
 const Wrapper: React.FC<WrapperProps> = ({ children }) => {
+  const { theme } = useTheme();
   const pathName = usePathname();
   useEffect(() => {
     setTimeout(() => {
@@ -28,28 +30,30 @@ const Wrapper: React.FC<WrapperProps> = ({ children }) => {
 
   return (
     <>
-      <BacktoTop />
-      {(() => {
-        switch (pathName) {
-          case "/":
-            return<HeaderOne />
-          case "/homeTwo":
-            return <HeaderTwo />;
-          case "/homeThree":
-            return <HeaderThree />;
-          default: 
-            return <HeaderFour />;
-        }
-      })()}
-      {children}
-      {(() => {
-        switch (pathName) {
-          default:
-            return <Footer />;
-          case "/homeThree":
-            return <FooterTwo />;
-        }
-      })()}
+      <div data-theme={theme}>
+        <BacktoTop />
+        {(() => {
+          switch (pathName) {
+            case "/":
+              return <HeaderOne />;
+            case "/homeTwo":
+              return <HeaderTwo />;
+            case "/homeThree":
+              return <HeaderThree />;
+            default:
+              return <HeaderFour />;
+          }
+        })()}
+        {children}
+        {(() => {
+          switch (pathName) {
+            default:
+              return <Footer />;
+            case "/homeThree":
+              return <FooterTwo />;
+          }
+        })()}
+      </div>
     </>
   );
 };

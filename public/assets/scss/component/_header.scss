@@ -5,7 +5,11 @@
 ----------*/
 
 @use "../abstract" as *;
-
+.header {
+	background-color: var(--background-color);
+	color: var(--text-color);
+  }
+  
 .sticky-header.sticky {
 	position: fixed;
 	top: 0;

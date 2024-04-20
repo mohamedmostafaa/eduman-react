@@ -17,10 +17,13 @@ import { AppContext } from "@/contextApi/AppProvider";
 import { AppContextType } from "@/interFace/interFace";
 import MobileMenu from "./components/MobileMenu";
 import DropdownCategory from "./components/DropdownCategory";
+import ThemeToggle from "./components/ThemeToggle";
 
 const HeaderOne = () => {
   const scrollDirection = useScrollDirection(null);
-  const {toggleSideMenu,sideMenuOpen} = useContext(AppContext) as AppContextType
+  const { toggleSideMenu, sideMenuOpen } = useContext(
+    AppContext
+  ) as AppContextType;
   const [cartOpen, setCartOpen] = useState(false);
 
   // redux import
@@ -68,7 +71,7 @@ const HeaderOne = () => {
                     <div className="main-menu d-none d-xl-block">
                       <nav id="mobile-menu">
                         <ul>
-                          <Menu/>
+                          <Menu />
                         </ul>
                       </nav>
                     </div>
@@ -119,15 +122,14 @@ const HeaderOne = () => {
                         Sign Up
                       </Link>
                     </div>
+                    <ThemeToggle />
                     <div className="menu-bar d-xl-none ml-20">
-                      <button onClick={toggleSideMenu}
-                        className="side-toggle"
-                      >
-                      <div  className="bar-icon">
-                        <span></span>
-                        <span></span>
-                        <span></span>
-                      </div>
+                      <button onClick={toggleSideMenu} className="side-toggle">
+                        <div className="bar-icon">
+                          <span></span>
+                          <span></span>
+                          <span></span>
+                        </div>
                       </button>
                     </div>
                   </div>
@@ -142,8 +144,15 @@ const HeaderOne = () => {
           className={cartOpen ? "body-overlay opened" : "body-overlay"}
         ></div>
       </header>
-      <MobileMenu/>
-      <div onClick={toggleSideMenu} className={sideMenuOpen ? "offcanvas-overlay overlay-signin" : "offcanvas-overlay"}></div>
+      <MobileMenu />
+      <div
+        onClick={toggleSideMenu}
+        className={
+          sideMenuOpen
+            ? "offcanvas-overlay overlay-signin"
+            : "offcanvas-overlay"
+        }
+      ></div>
     </>
   );
 };
